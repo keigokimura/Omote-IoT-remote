@@ -1,0 +1,17 @@
+/*契約ページのcss*/
+
+.firstname,.lastname {
+    width: 200px;
+}
+
+
+.conf-button button {
+    margin-left: 250px;
+    margin-top: 20px;
+    width:100px;
+    float: unset;
+}
+
+.border {
+    width: 500px;
+}
