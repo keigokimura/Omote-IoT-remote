@@ -153,11 +153,11 @@
         </div>
         <div class="form-group">
             <label>メールアドレス</label><br>
-            <?= htmlspecialchars($dmail) ?>
+            <?= htmlspecialchars($mail) ?>
         </div>
         <div class="form-group">
             <label>ethのアカウント</label><br>
-            <?= htmlspecialchars($deth) ?>
+            <?= htmlspecialchars($eth) ?>
         </div>
 
 
