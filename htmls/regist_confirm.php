@@ -74,7 +74,7 @@
 
 
             //データベースにinsert
-            $sql = "INSERT INTO water_users (name, tel, address, mail, eth) VALUES ("a","a","a","s","a")";
+            $sql = "INSERT INTO water_users ( name, tel, address, mail, eth) VALUES (1,1,1,1,1)";
             $stmh = $pdo->prepare($sql);
             $params = array(':name' => $_POST['firstname'] . $_POST['lastname'], ':tel' => $_POST['tel'], ':address' => $_POST['address'], ':mail' => $_POST['mail'], 'eth' => $_POST['eth']);
             $stmh->execute($params);
