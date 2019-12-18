@@ -74,24 +74,26 @@ try {
     <?php
     while($row = $stmh->fetch(PDO::FETCH_ASSOC)){
         ?>
-        <tr>
-            <th>name</th>
-            <th><?=htmlspecialchars($row['name'])?></th>
-        </tr>
-        <tr>
-            <th>tel</th>
-            <th><?=htmlspecialchars($row['phone'])?></th>
-        <tr>
-            <th>address</th>
-            <th><?=htmlspecialchars($row['address'])?></th>
-        </tr>
-        <tr>
-            <th>mail</th>
-            <th><?=htmlspecialchars($row['eth'])?></th>
-        <tr>
-            <th>eth</th>
-            <th><?=htmlspecialchars($row['id'])?></th>
-        </tr>
+        <div class="form-group">
+            <label>名前:</label><br>
+            <?= htmlspecialchars($row['name']) ?>
+        </div>
+        <div class="form-group">
+            <label>電話番号</label><br>
+            <?= htmlspecialchars($row['tel']) ?>
+        </div>
+        <div class="form-group">
+            <label>住所</label><br>
+            <?= htmlspecialchars($row['address']) ?>
+        </div>
+        <div class="form-group">
+            <label>メールアドレス</label><br>
+            <?= htmlspecialchars($row['mail']) ?>
+        </div>
+        <div class="form-group">
+            <label>ethのアカウント</label><br>
+            <?= htmlspecialchars($row['eth']) ?>
+        </div>
         <?php
     }
     $pdo = null;
