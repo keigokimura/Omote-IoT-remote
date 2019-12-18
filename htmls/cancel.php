@@ -77,25 +77,26 @@
         $eth=$eth['eth'];
         ?>
         <div class="form-group">
-            <label>お名前:</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($name) ?>'>
+            <label>お名前:</label><br>
+            <?= htmlspecialchars($name) ?>
         </div>
         <div class="form-group">
-            <label>電話番号</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($tel) ?>'>
+            <label>電話番号</label><br>
+            <?= htmlspecialchars($tel) ?>
         </div>
         <div class="form-group">
-            <label>住所</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($address) ?>'>
+            <label>住所</label><br>
+            <?= htmlspecialchars($address) ?>
         </div>
         <div class="form-group">
-            <label>メールアドレス</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($mail) ?>'>
+            <label>メールアドレス</label><br>
+            <?= htmlspecialchars($mail) ?>
         </div>
         <div class="form-group">
-            <label>ethのアカウント</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($eth) ?>'>
+            <label>ethのアカウント</label><br>
+            <?= htmlspecialchars($eth) ?>
         </div>
+
 
         解約しますか？<br>
         <div>
