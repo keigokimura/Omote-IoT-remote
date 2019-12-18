@@ -81,7 +81,7 @@
             //データベースにinsert
             $sql = "INSERT INTO waterusers ( name, tel, address, mail, eth) VALUES (:name,:tel,:address,:mail,:eth)";
             $stmh = $pdo->prepare($sql);
-            $params = array(':name' => $_POST['firstname'] . $_POST['lastname'], ':tel' => $_POST['tel'], ':address' => $_POST['address'], ':mail' => $_POST['mail'], 'eth' => $_POST['eth']);
+            $params = array(':name' => $name, ':tel' => $tel, ':address' => $address, ':mail' => $mail, 'eth' => $eth);
             $stmh->execute($params);
         }
 
@@ -136,7 +136,7 @@
         $dphone=$row['phone'];
         $daddress=$row['address'];
         $dmail=$row['mail'];
-        $deth=$eth['eth'];
+        $deth=$row['eth'];
         ?>
 
         <div class="form-group">
@@ -180,4 +180,3 @@
 </footer>
 </body>
 </html>
-
