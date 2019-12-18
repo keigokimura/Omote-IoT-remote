@@ -67,7 +67,7 @@
                 die();
             }
             try {
-                $sql = "SELECT * FROM water_users where water_users.eth=" . 'a';
+                $sql = "SELECT * FROM water_users where eth=" . $your_eth;
                 $stmh = $pdo->prepare($sql);
                 $stmh->execute();
 
@@ -77,7 +77,7 @@
 
 
         ?>
-
+a
         <table>
             <tbody>
             <?php
