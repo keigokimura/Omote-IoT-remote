@@ -80,7 +80,7 @@ function infolook()
         die();
     }
     try {
-        $sql = "SELECT * FROM water_users where eth=" . $your_eth;
+        $sql = "SELECT * FROM water_users;
         $stmh = $pdo->prepare($sql);
         $stmh->execute();
     } catch (PDOException $Exception) {
