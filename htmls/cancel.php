@@ -63,7 +63,8 @@
             die();
         }
         try{
-            $sql = "SELECT * FROM water_users";
+            $your_eth=account;
+            $sql = "SELECT * FROM water_users where eth=" . $your_eth;
             $stmh = $pdo->prepare($sql);
             $stmh->execute();
         }catch(PDOException $Exception){
