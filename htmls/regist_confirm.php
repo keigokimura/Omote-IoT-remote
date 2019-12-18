@@ -86,9 +86,7 @@
 
         以上の内容でよろしいでしょうか<br>
 
-            　　<input type="submit" name="submit">登録</input><br>
-
-
+            　　<input type="submit" name="submit" value="送信">
         <?php
 
         function insert(){
