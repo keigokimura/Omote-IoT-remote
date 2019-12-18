@@ -110,58 +110,9 @@
         </div>
 
         以上の内容でよろしいでしょうか<br>
-        <input type="submit" name="submit" value="送信"/>
-        <?php
-
-        if(isset($_POST["submit"])) { insert(); }
-
-        try{
-            // データベースへ接続
-            $dbinfo = parse_url(getenv('DATABASE_URL'));
-            $dsn = 'pgsql:host=' . $dbinfo['host'] . ';dbname=' . substr($dbinfo['path'], 1);
-            $pdo = new PDO($dsn, $dbinfo['user'], $dbinfo['pass']);
-        }catch (PDOException $e){
-            print('Error:'.$e->getMessage());
-            die();
-        }
-        try{
-            $sql = "SELECT * FROM water_users";
-            $stmh = $pdo->prepare($sql);
-            $stmh->execute();
-        }catch(PDOException $Exception){
-            die('接続エラー：' .$Exception->getMessage());
-        }
-        
-        ?>
-
-        <table>
-            <tbody>
-            <tr>
-                <th>name</th>
-                <th>phone</th>
-                <th>address</th>
-                <th>eth</th>
-                <th>id</th>
-            </tr>
-            <?php
-            while($row = $stmh->fetch(PDO::FETCH_ASSOC)){
-                ?>
-                <tr>
-                    <th><?=htmlspecialchars($row['name'])?></th>
-                    <th><?=htmlspecialchars($row['phone'])?></th>
-                    <th><?=htmlspecialchars($row['address'])?></th>
-                    <th><?=htmlspecialchars($row['eth'])?></th>
-                    <th><?=htmlspecialchars($row['id'])?></th>
-                </tr>
-                <?php
-            }
-            $pdo = null;
-            ?>
-            </tbody>
-        </table>
-
-
-
+        <div class="rebutton">
+            　　<button type="submit" name="submit" class="btn btn-primary">登録</button><br>
+        </div>
     </div>
 </div>
 <a href="waterserver_index.php">戻る</a>
