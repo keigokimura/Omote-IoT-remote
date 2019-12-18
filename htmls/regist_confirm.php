@@ -72,12 +72,16 @@
                 die();
             }
 
+            $name=$_POST['firstname'] . $_POST['lastname'];
+            $tel=$_POST['tel'];
+            $address=$_POST['address'];
+            $mail=$_POST['mail'];
+            $eth=$_POST['eth'];
 
             //データベースにinsert
-            $sql = "INSERT INTO water_users ( name, tel, address, mail, eth) VALUES (:name,:tel,:address,:mail,:eth)";
+            $sql = "INSERT INTO waterusers ( name, tel, address, mail, eth) VALUES (:name,:tel,:address,:mail,:eth)";
             $stmh = $pdo->prepare($sql);
-            //$params = array(':name' => $_POST['firstname'] . $_POST['lastname'], ':tel' => $_POST['tel'], ':address' => $_POST['address'], ':mail' => $_POST['mail'], 'eth' => $_POST['eth']);
-            $params = array(':name' => 'a', ':tel' => 'a', ':address' => 'a', ':mail' => 'a', 'eth' =>'a');
+            $params = array(':name' => $_POST['firstname'] . $_POST['lastname'], ':tel' => $_POST['tel'], ':address' => $_POST['address'], ':mail' => $_POST['mail'], 'eth' => $_POST['eth']);
             $stmh->execute($params);
         }
 
@@ -121,7 +125,7 @@
             die();
         }
         try{
-            $sql = "SELECT * FROM water_users";
+            $sql = "SELECT * FROM waterusers";
             $stmh = $pdo->prepare($sql);
             $stmh->execute();
         }catch(PDOException $Exception){
