@@ -90,23 +90,23 @@
 
         <div class="form-group">
             <label>お名前:</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($name) ?>'>
+            <input type="text"  class="form-control" value='<?= htmlspecialchars($name) ?>'>
         </div>
         <div class="form-group">
             <label>電話番号</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($tel) ?>'>
+            <input type="text" class="form-control" value='<?= htmlspecialchars($tel) ?>'>
         </div>
         <div class="form-group">
             <label>住所</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($address) ?>'>
+            <input type="text"  class="form-control" value='<?= htmlspecialchars($address) ?>'>
         </div>
         <div class="form-group">
             <label>メールアドレス</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($mail) ?>'>
+            <input type="text"  class="form-control" value='<?= htmlspecialchars($mail) ?>'>
         </div>
         <div class="form-group">
             <label>ethのアカウント</label>
-            <input type="text" readonly class="form-control" value='<?= htmlspecialchars($eth) ?>'>
+            <input type="text"  class="form-control" value='<?= htmlspecialchars($eth) ?>'>
         </div>
 
         以上の内容でよろしいでしょうか<br>
