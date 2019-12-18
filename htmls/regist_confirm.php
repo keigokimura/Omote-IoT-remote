@@ -55,13 +55,11 @@
 
         <?php
         //フォームから受け取った値を変数に代入
-        $name=$_POST['firstname'] . $_POST['lastname'];
+        //$name=$_POST['firstname'] . $_POST['lastname'];
         $tel=$_POST['tel'];
         $address=$_POST['address'];
         $mail=$_POST['mail'];
         $eth=$_POST['eth'];
-
-        echo $name;
 
         function insert(){
             try{
