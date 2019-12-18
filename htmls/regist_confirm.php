@@ -133,7 +133,7 @@
         }
 
         $dname=$stmh->fetch(PDO::FETCH_ASSOC)['mail'];
-        $dphone=$stmh->fetch(PDO::FETCH_ASSOC)['phone'];
+        $dtel=$stmh->fetch(PDO::FETCH_ASSOC)['phone'];
         $daddress=$stmh->fetch(PDO::FETCH_ASSOC)['address'];
         $dmail=$stmh->fetch(PDO::FETCH_ASSOC)['mail'];
         $deth=$stmh->fetch(PDO::FETCH_ASSOC)['eth'];
