@@ -57,9 +57,9 @@
         <div class="border rounded">
             <div class="userdata form-group">
                 <form method="POST" action="regist_confirm.php">
-                    <label class="mt-4">名前：</label><br>
+                    <label class="mt-4">アカウントアドレス：</label><br>
                     <input type="text" name="acount" class="lastname form-control" required>
-                    <div class="conf-button">
+                    <div class="lookbutton">
                         <button type="submit" name="submit" class="btn btn-primary" onclick="<? getaccount(); ?>">確認</button>
                         <br>
                     </div>
