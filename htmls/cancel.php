@@ -37,7 +37,7 @@
                 </div>
                 <div class="px-4 h5">
                     <li class="nav-item" style="border-bottom: 1.5px solid #f5f5f5"><a
-                                class="nav-link" href="#">登録情報</a></li>
+                                class="nav-link" href="../htmls/information_confirm.php">登録情報</a></li>
                 </div>
                 <div class="px-4 h5">
                     <li class="nav-item" style="border-bottom: 1.5px solid #f5f5f5"><a

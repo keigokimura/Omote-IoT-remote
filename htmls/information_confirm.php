@@ -38,7 +38,7 @@
                 </div>
                 <div class="px-4 h5">
                     <li class="nav-item" style="border-bottom: 1.5px solid #f5f5f5"><a
-                            class="nav-link" href="#">登録情報</a></li>
+                            class="nav-link" href="../htmls/information_confirm.php">登録情報</a></li>
                 </div>
                 <div class="px-4 h5">
                     <li class="nav-item" style="border-bottom: 1.5px solid #f5f5f5"><a
@@ -50,6 +50,8 @@
 </header>
 <div class="main">
     <div class="mx-auto" style="width: 600px;">
+
+        <h2>情報確認ページ</h2>
 <?
 try {
 // データベースへ接続
@@ -61,7 +63,7 @@ try {
     die();
 }
 try {
-    $sql = "SELECT * FROM water_users where eth='0x987ca6e7944f58455b0dd720bd58586d97d38692'";
+    $sql = "SELECT * FROM water_users where eth=" . $acounteth;
     $stmh = $pdo->prepare($sql);
     $stmh->execute();
 } catch (PDOException $Exception) {
