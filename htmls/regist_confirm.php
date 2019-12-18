@@ -55,11 +55,11 @@
 
         <?php
         //フォームから受け取った値を変数に代入
-        global $name=$_POST['firstname'] . $_POST['lastname'];
-        global $tel=$_POST['tel'];
-        global $address=$_POST['address'];
-        global $mail=$_POST['mail'];
-        global $eth=$_POST['eth'];
+        $name=$_POST['firstname'] . $_POST['lastname'];
+        $tel=$_POST['tel'];
+        $address=$_POST['address'];
+        $mail=$_POST['mail'];
+        $eth=$_POST['eth'];
         ?>
 
 
@@ -103,7 +103,7 @@
             //データベースにinsert
             $sql = "INSERT INTO water_users (name, tel, address, mail, eth) VALUES (:name, :tel, :address, :mail, :eth)";
             $stmh = $pdo->prepare($sql);
-            $params = array(':name' => $name, ':tel' => $tel, ':address' => $address, ':mail' => $mail, 'eth' => $eth);
+            $params = array(':name' => $_POST['firstname'] . $_POST['lastname'], ':tel' => $_POST['tel'], ':address' => $_POST['address'], ':mail' => $_POST['mail'], 'eth' => $_POST['eth']);
             $stmh->execute($params);
         }
 
