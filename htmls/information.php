@@ -67,7 +67,7 @@
                 die();
             }
             try {
-                $sql = "SELECT * FROM water_users where eth=" . $your_eth;
+                $sql = "SELECT * FROM water_users where eth='a'";
                 $stmh = $pdo->prepare($sql);
                 $stmh->execute();
 
@@ -81,23 +81,23 @@
             <tbody>
                 <div class="form-group">
                     <label>名前:</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['name']) ?>'>
+                    <input type="text" readonly class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['name']) ?>'>
                 </div>
                 <div class="form-group">
                     <label>電話番号</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['tel']) ?>'>
+                    <input type="text" readonly class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['tel']) ?>'>
                 </div>
                 <div class="form-group">
                     <label>住所</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['address']) ?>'>
+                    <input type="text" readonly class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['address']) ?>'>
                 </div>
                 <div class="form-group">
                     <label>メールアドレス</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['mail']) ?>'>
+                    <input type="text" readonly class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['mail']) ?>'>
                 </div>
                 <div class="form-group">
                     <label>ethのアカウント</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['eth']) ?>'>
+                    <input type="text" readonly class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['eth']) ?>'>
                 </div>
             </tbody>
         </table>
