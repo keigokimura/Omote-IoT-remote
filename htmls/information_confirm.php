@@ -60,7 +60,7 @@ try {
     die();
 }
 try {
-    $sql = "SELECT * FROM water_users";
+    $sql = "SELECT * FROM water_users where eth='0x987ca6e7944f58455b0dd720bd58586d97d38692'";
     $stmh = $pdo->prepare($sql);
     $stmh->execute();
 } catch (PDOException $Exception) {
@@ -71,21 +71,25 @@ try {
 
 <table>
     <tbody>
-    <tr>
-        <th>name</th>
-        <th>phone</th>
-        <th>address</th>
-        <th>eth</th>
-        <th>id</th>
-    </tr>
     <?php
     while($row = $stmh->fetch(PDO::FETCH_ASSOC)){
         ?>
         <tr>
+            <th>name</th>
             <th><?=htmlspecialchars($row['name'])?></th>
+        </tr>
+        <tr>
+            <th>tel</th>
             <th><?=htmlspecialchars($row['phone'])?></th>
+        <tr>
+            <th>address</th>
             <th><?=htmlspecialchars($row['address'])?></th>
+        </tr>
+        <tr>
+            <th>mail</th>
             <th><?=htmlspecialchars($row['eth'])?></th>
+        <tr>
+            <th>eth</th>
             <th><?=htmlspecialchars($row['id'])?></th>
         </tr>
         <?php
