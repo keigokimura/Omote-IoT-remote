@@ -77,7 +77,7 @@
         $eth=$eth['eth'];
         ?>
         <div class="form-group">
-            <label>お名前:</label><br>
+            <label>名前:</label><br>
             <?= htmlspecialchars($name) ?>
         </div>
         <div class="form-group">
@@ -147,4 +147,3 @@
 </footer>
 </body>
 </html>
-
