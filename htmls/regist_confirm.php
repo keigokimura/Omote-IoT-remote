@@ -131,34 +131,35 @@
         }catch(PDOException $Exception){
             die('接続エラー：' .$Exception->getMessage());
         }
-
-        $dname=$stmh->fetch(PDO::FETCH_ASSOC)['mail'];
-        $dtel=$stmh->fetch(PDO::FETCH_ASSOC)['phone'];
-        $daddress=$stmh->fetch(PDO::FETCH_ASSOC)['address'];
-        $dmail=$stmh->fetch(PDO::FETCH_ASSOC)['mail'];
-        $deth=$stmh->fetch(PDO::FETCH_ASSOC)['eth'];
+        
         ?>
 
-        <div class="form-group">
-            <label>名前:</label><br>
-            <?= htmlspecialchars($dname) ?>
-        </div>
-        <div class="form-group">
-            <label>電話番号</label><br>
-            <?= htmlspecialchars($dtel) ?>
-        </div>
-        <div class="form-group">
-            <label>住所</label><br>
-            <?= htmlspecialchars($daddress) ?>
-        </div>
-        <div class="form-group">
-            <label>メールアドレス</label><br>
-            <?= htmlspecialchars($mail) ?>
-        </div>
-        <div class="form-group">
-            <label>ethのアカウント</label><br>
-            <?= htmlspecialchars($eth) ?>
-        </div>
+        <table>
+            <tbody>
+            <tr>
+                <th>name</th>
+                <th>phone</th>
+                <th>address</th>
+                <th>eth</th>
+                <th>id</th>
+            </tr>
+            <?php
+            while($row = $stmh->fetch(PDO::FETCH_ASSOC)){
+                ?>
+                <tr>
+                    <th><?=htmlspecialchars($row['name'])?></th>
+                    <th><?=htmlspecialchars($row['phone'])?></th>
+                    <th><?=htmlspecialchars($row['address'])?></th>
+                    <th><?=htmlspecialchars($row['eth'])?></th>
+                    <th><?=htmlspecialchars($row['id'])?></th>
+                </tr>
+                <?php
+            }
+            $pdo = null;
+            ?>
+            </tbody>
+        </table>
+
 
 
     </div>
