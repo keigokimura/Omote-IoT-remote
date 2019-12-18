@@ -77,6 +77,7 @@
         $mail=$row['mail'];
         $eth=$eth['eth'];
         ?>
+        <? echo $_POST['mes']; ?>
         <div class="form-group">
             <label>名前:</label><br>
             <?= htmlspecialchars($name) ?>
