@@ -53,19 +53,65 @@
 
         <h2>情報確認ページ</h2>
 
-        あなたのethのアカウントを入力してください。
-        <div class="border rounded">
-            <div class="form-group">
-                <form method="POST" action="information.php">
-                    <label class="mt-4">アカウントアドレス：</label><br>
-                    <input type="text" name="acount" class="acount form-control" required>
-                        <button type="submit" class="btn btn-primary">情報を見る</button>
-                        <br>
-                </form>
-            </div>
-        </div>
+        <?php
+
+            $your_eth=$_POST['acount'];
+            echo $your_eth;
+            try {
+// データベースへ接続
+                $dbinfo = parse_url(getenv('DATABASE_URL'));
+                $dsn = 'pgsql:host=' . $dbinfo['host'] . ';dbname=' . substr($dbinfo['path'], 1);
+                $pdo = new PDO($dsn, $dbinfo['user'], $dbinfo['pass']);
+            } catch (PDOException $e) {
+                print('Error:' . $e->getMessage());
+                die();
+            }
+            try {
+                $sql = "SELECT * FROM water_users where eth=" . $your_eth;
+                $stmh = $pdo->prepare($sql);
+                $stmh->execute();
+
+            } catch (PDOException $Exception) {
+                die('接続エラー：' . $Exception->getMessage());
+            }
+
+
+        ?>
+
+        <table>
+            <tbody>
+            <?php
+            while($row = $stmh->fetch(PDO::FETCH_ASSOC)){
+                ?>
+                <div class="form-group">
+                    <label>名前:</label><br>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['name']) ?>'>
+                </div>
+                <div class="form-group">
+                    <label>電話番号</label><br>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['tel']) ?>'>
+                </div>
+                <div class="form-group">
+                    <label>住所</label><br>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['address']) ?>'>
+                </div>
+                <div class="form-group">
+                    <label>メールアドレス</label><br>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['mail']) ?>'>
+                </div>
+                <div class="form-group">
+                    <label>ethのアカウント</label><br>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['eth']) ?>'>
+                </div>
+                <?php
+            }
+            $pdo = null;
+            ?>
+            </tbody>
+        </table>
     </div>
 </div>
+
 <footer>
     <div class="bottom section-padding">
         <div class="container">
