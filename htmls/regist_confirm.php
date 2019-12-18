@@ -90,7 +90,7 @@
         </div>
 
         <?php
-        /*
+
         function insert(){
             try{
                 // データベースへ接続
@@ -110,7 +110,7 @@
             $stmh->execute($params);
         }
 
-        if(isset($_POST["submit"])) { insert(); }*/
+        if(isset($_POST["submit"])) { insert(); }
         ?>
 
     </div>
