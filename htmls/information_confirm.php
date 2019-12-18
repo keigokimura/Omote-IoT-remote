@@ -55,8 +55,8 @@
 
         あなたのethのアカウントを入力してください。
         <div class="border rounded">
-            <div class="userdata form-group">
-                <form method="POST" action="regist_confirm.php">
+            <div class="form-group">
+                <form method="POST">
                     <label class="mt-4">アカウントアドレス：</label><br>
                     <input type="text" name="acount" class="lastname form-control" required>
                         <button class="btn btn-primary" onclick="<?php infolook(); ?>">情報を見る</button>
