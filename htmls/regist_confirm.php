@@ -111,7 +111,52 @@
         }
 
         if(isset($_POST["submit"])) { insert(); }
+
+        try{
+            // データベースへ接続
+            $dbinfo = parse_url(getenv('DATABASE_URL'));
+            $dsn = 'pgsql:host=' . $dbinfo['host'] . ';dbname=' . substr($dbinfo['path'], 1);
+            $pdo = new PDO($dsn, $dbinfo['user'], $dbinfo['pass']);
+        }catch (PDOException $e){
+            print('Error:'.$e->getMessage());
+            die();
+        }
+        try{
+            $sql = "SELECT * FROM water_users where eth=";
+            $stmh = $pdo->prepare($sql);
+            $stmh->execute();
+        }catch(PDOException $Exception){
+            die('接続エラー：' .$Exception->getMessage());
+        }
+
+        $dname=$row['mail'];
+        $dphone=$row['phone'];
+        $daddress=$row['address'];
+        $dmail=$row['mail'];
+        $deth=$eth['eth'];
         ?>
+
+        <div class="form-group">
+            <label>名前:</label><br>
+            <?= htmlspecialchars($dname) ?>
+        </div>
+        <div class="form-group">
+            <label>電話番号</label><br>
+            <?= htmlspecialchars($dtel) ?>
+        </div>
+        <div class="form-group">
+            <label>住所</label><br>
+            <?= htmlspecialchars($daddress) ?>
+        </div>
+        <div class="form-group">
+            <label>メールアドレス</label><br>
+            <?= htmlspecialchars($dmail) ?>
+        </div>
+        <div class="form-group">
+            <label>ethのアカウント</label><br>
+            <?= htmlspecialchars($deth) ?>
+        </div>
+
 
     </div>
 </div>
