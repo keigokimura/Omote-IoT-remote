@@ -61,6 +61,8 @@
         $mail=$_POST['mail'];
         $eth=$_POST['eth'];
 
+        echo $name;
+
         function insert(){
             try{
                 // データベースへ接続
