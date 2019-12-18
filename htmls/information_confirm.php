@@ -59,10 +59,8 @@
                 <form method="POST" action="regist_confirm.php">
                     <label class="mt-4">アカウントアドレス：</label><br>
                     <input type="text" name="acount" class="lastname form-control" required>
-                    <div class="lookbutton">
-                        <button type="submit" name="submit" class="btn btn-primary" onclick="<? infolook(); ?>">確認</button>
+                        <button class="btn btn-primary" onclick="<?php infolook(); ?>">情報を見る</button>
                         <br>
-                    </div>
                 </form>
             </div>
         </div>
