@@ -85,9 +85,9 @@
         </div>
 
         以上の内容でよろしいでしょうか<br>
-        <div class="rebutton">
-            　　<button type="submit" name="submit" class="btn btn-primary">登録</button><br>
-        </div>
+
+            　　<input type="submit" name="submit" class="btn btn-primary">登録</input><br>
+        
 
         <?php
 
