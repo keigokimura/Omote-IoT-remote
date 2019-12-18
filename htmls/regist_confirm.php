@@ -111,7 +111,7 @@
 
         以上の内容でよろしいでしょうか<br>
         <div class="rebutton">
-            　　<button type="submit" name="submit" class="btn btn-primary">登録</button><br>
+            　　<button type="submit" name="submit" class="btn btn-primary" onclick="<? insert(); ?>">登録</button><br>
         </div>
     </div>
 </div>
