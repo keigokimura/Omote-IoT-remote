@@ -60,6 +60,26 @@
         $address=$_POST['address'];
         $mail=$_POST['mail'];
         $eth=$_POST['eth'];
+
+        function insert(){
+            try{
+                // データベースへ接続
+                $dbinfo = parse_url(getenv('DATABASE_URL'));
+                $dsn = 'pgsql:host=' . $dbinfo['host'] . ';dbname=' . substr($dbinfo['path'], 1);
+                $pdo = new PDO($dsn, $dbinfo['user'], $dbinfo['pass']);
+            }catch (PDOException $e){
+                print('Error:'.$e->getMessage());
+                die();
+            }
+
+
+            //データベースにinsert
+            $sql = "INSERT INTO water_users (name, tel, address, mail, eth) VALUES ("a","a","a","s","a")";
+            $stmh = $pdo->prepare($sql);
+            $params = array(':name' => $_POST['firstname'] . $_POST['lastname'], ':tel' => $_POST['tel'], ':address' => $_POST['address'], ':mail' => $_POST['mail'], 'eth' => $_POST['eth']);
+            $stmh->execute($params);
+        }
+
         ?>
 
 
@@ -87,25 +107,6 @@
         以上の内容でよろしいでしょうか<br>
         <input type="submit" name="submit" value="送信"/>
         <?php
-
-        function insert(){
-            try{
-                // データベースへ接続
-                $dbinfo = parse_url(getenv('DATABASE_URL'));
-                $dsn = 'pgsql:host=' . $dbinfo['host'] . ';dbname=' . substr($dbinfo['path'], 1);
-                $pdo = new PDO($dsn, $dbinfo['user'], $dbinfo['pass']);
-            }catch (PDOException $e){
-                print('Error:'.$e->getMessage());
-                die();
-            }
-
-
-            //データベースにinsert
-            $sql = "INSERT INTO water_users (name, tel, address, mail, eth) VALUES (:name, :tel, :address, :mail, :eth)";
-            $stmh = $pdo->prepare($sql);
-            $params = array(':name' => $_POST['firstname'] . $_POST['lastname'], ':tel' => $_POST['tel'], ':address' => $_POST['address'], ':mail' => $_POST['mail'], 'eth' => $_POST['eth']);
-            $stmh->execute($params);
-        }
 
         if(isset($_POST["submit"])) { insert(); }
 
