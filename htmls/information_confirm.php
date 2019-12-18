@@ -48,7 +48,8 @@
         </div>
     </nav>
 </header>
-
+<div class="main">
+    <div class="mx-auto" style="width: 600px;">
 <?
 try {
 // データベースへ接続
@@ -76,23 +77,23 @@ try {
         ?>
         <div class="form-group">
             <label>名前:</label><br>
-            <?= htmlspecialchars($row['name']) ?>
+            <input type="text"  class="form-control" value='<?= htmlspecialchars($row['name']) ?>'>
         </div>
         <div class="form-group">
             <label>電話番号</label><br>
-            <?= htmlspecialchars($row['tel']) ?>
+            <input type="text"  class="form-control" value='<?= htmlspecialchars($row['tel']) ?>'>
         </div>
         <div class="form-group">
             <label>住所</label><br>
-            <?= htmlspecialchars($row['address']) ?>
+            <input type="text"  class="form-control" value='<?= htmlspecialchars($row['address']) ?>'>
         </div>
         <div class="form-group">
             <label>メールアドレス</label><br>
-            <?= htmlspecialchars($row['mail']) ?>
+            <input type="text"  class="form-control" value='<?= htmlspecialchars($row['mail']) ?>'>
         </div>
         <div class="form-group">
             <label>ethのアカウント</label><br>
-            <?= htmlspecialchars($row['eth']) ?>
+            <input type="text"  class="form-control" value='<?= htmlspecialchars($row['eth']) ?>'>
         </div>
         <?php
     }
@@ -100,7 +101,8 @@ try {
     ?>
     </tbody>
 </table>
-
+    </div>
+</div>
 
 <footer>
     <div class="bottom section-padding">
