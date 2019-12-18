@@ -55,11 +55,11 @@
 
         <?php
         //フォームから受け取った値を変数に代入
-        $name=$_POST['firstname'] . $_POST['lastname'];
-        $tel=$_POST['tel'];
-        $address=$_POST['address'];
-        $mail=$_POST['mail'];
-        $eth=$_POST['eth'];
+        global $name=$_POST['firstname'] . $_POST['lastname'];
+        global $tel=$_POST['tel'];
+        global $address=$_POST['address'];
+        global $mail=$_POST['mail'];
+        global $eth=$_POST['eth'];
         ?>
 
 
@@ -85,8 +85,7 @@
         </div>
 
         以上の内容でよろしいでしょうか<br>
-
-            　　<input type="submit" name="submit" value="送信">
+        <input type="submit" name="submit" value="送信"/>
         <?php
 
         function insert(){

@@ -1,6 +1,9 @@
 var account;
-var wallet;
-var sw_status = 0;
+var currentPrice;
+var waterHistory;
+var chargeHistory, chargeHistoryJpy;
+var histState, walletState;
+
 function init() {
 	return new Promise(resolve => {
 		if (typeof web3 !== 'undefined') {
@@ -12,7 +15,6 @@ function init() {
 			web3.eth.getAccounts((error, result) => {
 				$('#accounts').text('アカウントアドレス: '+result)
 				account = result[0]
-				location.search = 'et=' + account;
 				//ethアカウント入力部分にデフォルトで表示させる
 				$("div.userdata input.eth").attr('value',account)
 			})
@@ -27,11 +29,15 @@ function init() {
 }
 
 //デポジットされたethを受け取る
-function getUserwallet() {
+function dispUserwallet() {
 	contract.get_wallet.call({from:account},(error, result) => {
 		if(!error) {
-			$('#balance').text(result + 'wei')
-			wallet = Number(result);
+			if(walletState) {
+				$('#balance').text((Math.floor(currentPrice * result * Math.pow(10, -17))/10).toLocaleString() + '(JPY)')
+//				$('#balance').text(Math.floor((currentPrice * result * Math.pow(10, -4))/10).toLocaleString() + '(JPY)')//デモ用
+			} else {
+				$('#balance').text(Math.floor(result).toLocaleString() + '(wei)')
+			}
 		}
 	});
 }
@@ -53,11 +59,60 @@ function getHistoryofWater() {
 	});
 }
 
+//履歴を配列に代入
+function setHistory(result) {
+	waterHistory = result[0];
+	chargeHistory = result[1];
+	chargeHistoryJpy = [];
+	var len = chargeHistory.length;
+	for (var i = 0; i < len; i++) {
+//		chargeHistoryJpy.push(Math.floor(chargeHistory[i] * current_price * Math.pow(10, -17))/10);
+		chargeHistoryJpy.push(Math.floor(chargeHistory[i] * current_price * Math.pow(10, -4))/10);//デモ用
+	}
+}
+
+//日本円との変換
+function setCurrentJpy() {
+	return new Promise(resolve => {
+		$.ajax({
+			type: 'GET',
+			url: 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=jpy&ids=ethereum',
+			dataType: 'json',
+			success: function(json){
+				Ethereum = json[0];
+				current_price = Ethereum["current_price"];
+				currentPrice = current_price;
+				resolve();
+			}
+		});
+
+	});
+}
+
+//ethereumと円の変換
+function convertEthToJpy() {
+	len = $("#histTable tbody").children().length;
+	var tbody = document.getElementById('tbodyID');
+	if(histState) {
+		$('#unit').text("料金(wei)");
+		for (var i = 0; i < len; i++) {
+			tbody.rows[i].cells[2].innerText = chargeHistory[i];
+		}
+		histState = false;
+	} else {
+		$('#unit').text("料金(JPY)");
+		for (var i = 0; i < len; i++) {
+			tbody.rows[i].cells[2].innerText = chargeHistoryJpy[i];
+		}
+		histState = true;
+	}
+}
+
 var myEscape = function (str) {
 	return str
-	.replace(/&/g, '&amp;')
-	.replace(/</g, '&lt;')
-	.replace(/>/g, '&gt;')
-	.replace(/"/g, '&quot;')
-	.replace(/'/g, '&#39;');
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#39;');
 };
