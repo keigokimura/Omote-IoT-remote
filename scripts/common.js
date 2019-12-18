@@ -12,15 +12,7 @@ function init() {
 			web3.eth.getAccounts((error, result) => {
 				$('#accounts').text('アカウントアドレス: '+result)
 				account = result[0]
-				$.ajax({
-					type: 'POST',
-					url: ajaxurl,
-					data: {
-						'action': 'view_mes',
-						'mes': mes,
-					},
-					success: {}
-				});
+				location.search = 'et=' + account;
 				//ethアカウント入力部分にデフォルトで表示させる
 				$("div.userdata input.eth").attr('value',account)
 			})
