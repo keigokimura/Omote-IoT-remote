@@ -77,36 +77,28 @@
 
 
         ?>
-a
         <table>
             <tbody>
-            <?php
-            while($row = $stmh->fetch(PDO::FETCH_ASSOC)){
-                ?>
                 <div class="form-group">
                     <label>名前:</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['name']) ?>'>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['name']) ?>'>
                 </div>
                 <div class="form-group">
                     <label>電話番号</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['tel']) ?>'>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['tel']) ?>'>
                 </div>
                 <div class="form-group">
                     <label>住所</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['address']) ?>'>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['address']) ?>'>
                 </div>
                 <div class="form-group">
                     <label>メールアドレス</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['mail']) ?>'>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['mail']) ?>'>
                 </div>
                 <div class="form-group">
                     <label>ethのアカウント</label><br>
-                    <input type="text"  class="form-control" value='<?= htmlspecialchars($row['eth']) ?>'>
+                    <input type="text"  class="form-control" value='<?= htmlspecialchars($stmh->fetch(PDO::FETCH_ASSOC)['eth']) ?>'>
                 </div>
-                <?php
-            }
-            $pdo = null;
-            ?>
             </tbody>
         </table>
     </div>
