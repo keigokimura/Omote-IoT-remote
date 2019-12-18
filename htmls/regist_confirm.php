@@ -81,9 +81,9 @@
             $eth=$_POST['eth'];
 
             //データベースにinsert
-            $sql = "INSERT INTO waterusers ( name, tel, address, mail, eth) VALUES (:name,:tel,:address,:mail,:eth)";
+            $sql = "INSERT INTO water_users ( name, tel, address, mail, eth) VALUES (:name,:tel,:address,:mail,:eth)";
             $stmh = $pdo->prepare($sql);
-            $params = array(':name' => $name, ':tel' => $tel, ':address' => $address, ':mail' => $mail, 'eth' => $eth);
+            $params = array(':name' => $name, ':tel' => $tel, ':address' => $address, ':mail' => $mail, ':eth' => $eth);
             $stmh->execute($params);
         }
 
@@ -127,7 +127,7 @@
             die();
         }
         try{
-            $sql = "SELECT * FROM waterusers";
+            $sql = "SELECT * FROM water_users";
             $stmh = $pdo->prepare($sql);
             $stmh->execute();
         }catch(PDOException $Exception){
