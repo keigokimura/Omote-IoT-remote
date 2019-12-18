@@ -52,24 +52,43 @@
     <div class="mx-auto" style="width: 600px;">
 
         <h2>情報確認ページ</h2>
-<?
-try {
-// データベースへ接続
-    $dbinfo = parse_url(getenv('DATABASE_URL'));
-    $dsn = 'pgsql:host=' . $dbinfo['host'] . ';dbname=' . substr($dbinfo['path'], 1);
-    $pdo = new PDO($dsn, $dbinfo['user'], $dbinfo['pass']);
-} catch (PDOException $e) {
-    print('Error:' . $e->getMessage());
-    die();
-}
-try {
-    $sql = "SELECT * FROM water_users where eth=" . $acounteth;
-    $stmh = $pdo->prepare($sql);
-    $stmh->execute();
-} catch (PDOException $Exception) {
-    die('接続エラー：' . $Exception->getMessage());
-}
 
+        あなたのethのアカウントを入力してください。
+        <div class="border rounded">
+            <div class="userdata form-group">
+                <form method="POST" action="regist_confirm.php">
+                    <label class="mt-4">名前：</label><br>
+                    <input type="text" name="acount" class="lastname form-control" required>
+                    <div class="conf-button">
+                        <button type="submit" name="submit" class="btn btn-primary" onclick="<? getaccount(); ?>">確認</button>
+                        <br>
+                    </div>
+                </form>
+            </div>
+        </div>
+<?
+function getaccount()
+{
+    $your_eth=$_POST['acount'];
+    echo $your_eth;
+    try {
+// データベースへ接続
+        $dbinfo = parse_url(getenv('DATABASE_URL'));
+        $dsn = 'pgsql:host=' . $dbinfo['host'] . ';dbname=' . substr($dbinfo['path'], 1);
+        $pdo = new PDO($dsn, $dbinfo['user'], $dbinfo['pass']);
+    } catch (PDOException $e) {
+        print('Error:' . $e->getMessage());
+        die();
+    }
+    try {
+        $sql = "SELECT * FROM water_users where eth=" . $your_eth;
+        $stmh = $pdo->prepare($sql);
+        $stmh->execute();
+    } catch (PDOException $Exception) {
+        die('接続エラー：' . $Exception->getMessage());
+    }
+
+}
 ?>
 
 <table>
