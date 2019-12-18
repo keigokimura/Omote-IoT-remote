@@ -60,14 +60,15 @@
                     <label class="mt-4">アカウントアドレス：</label><br>
                     <input type="text" name="acount" class="lastname form-control" required>
                     <div class="lookbutton">
-                        <button type="submit" name="submit" class="btn btn-primary" onclick="<? getaccount(); ?>">確認</button>
+                        <button type="submit" name="submit" class="btn btn-primary" onclick="<? infolook(); ?>">確認</button>
                         <br>
                     </div>
                 </form>
             </div>
         </div>
-<?
-function getaccount()
+<?php
+
+function infolook()
 {
     $your_eth=$_POST['acount'];
     echo $your_eth;
