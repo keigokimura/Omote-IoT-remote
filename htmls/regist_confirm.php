@@ -55,7 +55,7 @@
 
         <?php
         //フォームから受け取った値を変数に代入
-        //$name=$_POST['firstname'] . $_POST['lastname'];
+        $name=$_POST['firstname'] . $_POST['lastname'];
         $tel=$_POST['tel'];
         $address=$_POST['address'];
         $mail=$_POST['mail'];
@@ -132,11 +132,11 @@
             die('接続エラー：' .$Exception->getMessage());
         }
 
-        $dname=$row['mail'];
-        $dphone=$row['phone'];
-        $daddress=$row['address'];
-        $dmail=$row['mail'];
-        $deth=$row['eth'];
+        $dname=$stmh->fetch(PDO::FETCH_ASSOC)['mail'];
+        $dphone=$stmh->fetch(PDO::FETCH_ASSOC)['phone'];
+        $daddress=$stmh->fetch(PDO::FETCH_ASSOC)['address'];
+        $dmail=$stmh->fetch(PDO::FETCH_ASSOC)['mail'];
+        $deth=$stmh->fetch(PDO::FETCH_ASSOC)['eth'];
         ?>
 
         <div class="form-group">
